@@ -1,14 +1,24 @@
-#:schema node_modules/wrangler/config-schema.json
 name = "crm-app"
 main = ".open-next/worker.js"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 
+# إعدادات الأصول الثابتة
 [assets]
 directory = ".open-next/assets"
 binding = "ASSETS"
 
+# إعدادات قاعدة البيانات D1
 [[d1_databases]]
 binding = "DB"
 database_name = "crm_database"
 database_id = "crm-database-id"
+
+# إعدادات البناء (إذا كنت تستخدم Next.js أو أي بناء آخر)
+[build]
+  output_dir = ".next"  # تأكد من أن هذا هو المجلد الصحيح لملفات الإخراج
+
+# إعدادات المتغيرات البيئية
+[env.production]
+  NODE_ENV = "production"
+  JWT_SECRET = "your_secret_key_here"  # استبدل هذا بمفتاح سري قوي وآمن
