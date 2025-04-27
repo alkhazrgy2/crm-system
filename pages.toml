@@ -1,0 +1,36 @@
+# ملف تكوين النشر لـ Cloudflare Pages
+
+## إعدادات البناء
+build.command = "npm run build"
+build.output = ".next"
+build.environment = { NODE_ENV = "production" }
+
+## إعدادات التطبيق
+[env.production]
+  NODE_ENV = "production"
+  DB_CONNECTION = "d1"
+  NEXT_PUBLIC_API_URL = "https://crm-app.pages.dev/api"
+  NEXT_PUBLIC_SITE_URL = "https://crm-app.pages.dev"
+
+## إعدادات قاعدة البيانات
+[[d1_databases]]
+binding = "DB"
+database_name = "crm_database"
+database_id = "crm-database-id"
+
+## إعدادات الأمان
+[headers]
+  for = "/*"
+    [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+## إعدادات التوجيه
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
+  force = true
