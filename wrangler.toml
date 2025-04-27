@@ -1,14 +1,25 @@
-#:schema node_modules/wrangler/config-schema.json
 name = "crm-app"
 main = ".open-next/worker.js"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 
+# إعدادات الأصول الثابتة (assets)
 [assets]
 directory = ".open-next/assets"
 binding = "ASSETS"
 
+# إعدادات قاعدة البيانات D1
 [[d1_databases]]
 binding = "DB"
 database_name = "crm_database"
 database_id = "crm-database-id"
+
+# إعدادات البناء
+[build]
+  output_dir = ".next"  # تحديد مجلد الإخراج بعد البناء
+  pages_build_output_dir = ".next"  # تحديد المجلد الناتج الخاص بصفحات Cloudflare
+
+# إعدادات البيئة في الإنتاج
+[env.production]
+  NODE_ENV = "production"
+  JWT_SECRET = "your_secret_key_here"  # استبدل هذا بمفتاح سري قوي وآمن
