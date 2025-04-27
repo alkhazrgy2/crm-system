@@ -14,9 +14,10 @@ binding = "DB"
 database_name = "crm_database"
 database_id = "crm-database-id"
 
-# إعدادات البناء (إذا كنت تستخدم Next.js أو أي بناء آخر)
+# إعدادات البناء
 [build]
   output_dir = ".next"  # تأكد من أن هذا هو المجلد الصحيح لملفات الإخراج
+  pages_build_output_dir = ".next"  # هذه الخاصية مهمة لتحديد المجلد الناتج لصفحات Cloudflare
 
 # إعدادات المتغيرات البيئية
 [env.production]
